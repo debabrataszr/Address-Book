@@ -1,8 +1,6 @@
 
 import java.util.Scanner;
 
-import java.util.Scanner;
-
 public class AddressBookMain {
     static Scanner sc = new Scanner(System.in);
 
