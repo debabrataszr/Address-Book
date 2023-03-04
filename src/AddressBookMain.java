@@ -15,7 +15,7 @@ public class AddressBookMain {
 
         System.out.println("First name:"+c.firstname);
         System.out.println("Last name:"+c.lastname);
-        System.out.println("Addres:"+c.address);
+        System.out.println("Address:"+c.address);
         System.out.println("City:"+c.city);
         System.out.println("State:"+c.state);
         System.out.println("E-mail:"+c.email);
