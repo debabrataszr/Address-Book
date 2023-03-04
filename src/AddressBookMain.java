@@ -1,25 +1,36 @@
+import java.util.Scanner;
+
 public class AddressBookMain {
     public static void main(String[] args) {
         System.out.println("Welcome to Address Book Program");
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter number of contacts :");
+        int contact = sc.nextInt();
+        Contact[] cArray = new Contact[contact];
+        for (int i = 0; i < contact; i++) {
+            System.out.println("Enter " + (i + 1) + "'s" + " First name-");
+            String firstname = sc.next();
+            System.out.println("Enter " + (i + 1) + "'s" + "Last name:");
+            String lastname = sc.next();
+            System.out.println("Enter " + (i + 1) + "'s" + " Address:");
+            String address = sc.next();
+            System.out.println("Enter " + (i + 1) + "'s" + "City:");
+            String city = sc.next();
+            System.out.println("Enter " + (i + 1) + "'s" + "State:");
+            String state = sc.next();
+            System.out.println("Enter " + (i + 1) + "'s" + "Zip code:");
+            int zip = sc.nextInt();
+            System.out.println("Enter " + (i + 1) + "'s" + " Phone no.:");
+            long phoneno = sc.nextInt();
+            System.out.println("Enter " + (i + 1) + "'s" + "E-mail:");
+            String email = sc.next();
+            Contact c = new Contact(firstname, lastname, address, city, state, zip, phoneno, email);
+            cArray[i] = c;
+        }
 
-        Contact c = new Contact();
-
-        c.firstname = "Debabrata";
-        c.lastname = "Sahoo";
-        c.address = "Koel Nagar";
-        c.city = "Rourkela";
-        c.state = "Odisha";
-        c.email = "debabratas@xyz.com";
-        c.zip = 751025;
-        c.phoneno = 797805896;
-
-        System.out.println("First name:"+c.firstname);
-        System.out.println("Last name:"+c.lastname);
-        System.out.println("Addres:"+c.address);
-        System.out.println("City:"+c.city);
-        System.out.println("State:"+c.state);
-        System.out.println("E-mail:"+c.email);
-        System.out.println("Zip code:"+c.zip);
-        System.out.println("Phone no.:"+c.phoneno);
+        for (int i = 0; i < contact; i++) {
+            System.out.println(cArray[i].firstname + " " + cArray[i].lastname + " " + cArray[i].address + " "
+                    + cArray[i].city + " " + cArray[i].state + " " + cArray[i].zip + " " + cArray[i].phoneno + " " + cArray[i].email);
+        }
     }
 }
