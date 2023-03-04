@@ -55,7 +55,7 @@ public class Contact {
         return phoneno;
     }
 
-    public void setPhoneno(int phoneno) {
+    public void setPhoneno(long phoneno) {
         this.phoneno = phoneno;
     }
 
