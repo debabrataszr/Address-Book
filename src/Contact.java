@@ -1,7 +1,7 @@
 public class Contact {
-    String firstname, lastname, address, city, state, email;
-    int zip;
-    long phoneno;
+    private String firstname, lastname, address, city, state, email;
+    private int zip;
+    private long phoneno;
 
     public String getFirstname() {
         return firstname;
