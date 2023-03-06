@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Scanner;
 
 public class AddressBookMain {
@@ -7,28 +8,47 @@ public class AddressBookMain {
     public static void main(String[] args) {
         System.out.println("Welcome to Address Book Program");
 
-        ArrayList<Contact> cArray = new ArrayList<>();
-        String option = "Null";
-        while (!option.equalsIgnoreCase("stop")) {
-            System.out.println("What to do ?");
-            System.out.println("Add ,\n Edit ,\n Delete ,\n Print ,\n Stop");
-            option = sc.next();
-            switch (option) {
-                case "add":
-                    Add(cArray);
-                    break;
-                case "edit":
-                    Edit(cArray);
-                    break;
-                case "delete":
-                    Delete(cArray);
-                    break;
-                case "print":
-                    Print(cArray);
-                    break;
-                case "stop":
-                    Stop();
-                    break;
+        String multiAddressBook = "continue";
+        while (!multiAddressBook.equalsIgnoreCase("no")) {
+            System.out.print("Enter the name of Address Book : ");
+            String bookName = sc.next();
+
+            ArrayList<Contact> cArray = new ArrayList<>();
+            HashMap<String, ArrayList<Contact>> map = new HashMap<>();
+
+            String choice = "None";
+            while (!choice.equalsIgnoreCase("stop")) {
+                Contact c = new Contact();
+                System.out.println("What do you want to perform ?");
+                System.out.print("Add , Edit , Delete , Print , Stop this addressbook:");
+                choice = sc.next();
+                switch (choice) {
+                    case "add":
+                        Add(cArray);
+                        break;
+                    case "edit":
+                        Edit(cArray);
+                        break;
+                    case "delete":
+                        Delete(cArray);
+                        break;
+                    case "print":
+                        Print(cArray);
+                        break;
+                    case "stop":
+                        System.out.println("P.T.O");
+                        break;
+                }
+                map.put(bookName, cArray);
+            }
+            System.out.print("Do you want to add new book - yes /no :");
+            multiAddressBook = sc.next();
+            for (int j = 0; j < cArray.size(); j++) {
+                System.out.println(bookName + "  " + map.get(bookName).get(j).getFirstname() + " " +
+                        map.get(bookName).get(j).getLastname() + " " + map.get(bookName).get(j).getAddress() + " " +
+                        map.get(bookName).get(j).getCity() + " " +map.get(bookName).get(j).getState()+" "
+                        + map.get(bookName).get(j).getZip() + " " + map.get(bookName).get(j).getPhoneno() + " " +
+                        map.get(bookName).get(j).getEmail());
             }
         }
     }
@@ -37,89 +57,87 @@ public class AddressBookMain {
         String option;
         do {
             Contact contact = new Contact();
-            System.out.println("Enter name:");
+            System.out.print("enter name- ");
             contact.setFirstname(sc.next());
-            System.out.println("Enter lastname:");
+            System.out.print("enter lastname- ");
             contact.setLastname(sc.next());
-            System.out.println("Enter address:");
+            System.out.print("enter address- ");
             contact.setAddress(sc.next());
-            System.out.println("Enter city:");
-            contact.setCity(sc.next());
-            System.out.println("Enter state:");
+            System.out.print("enter state- ");
             contact.setState(sc.next());
-            System.out.println("Enter zip code:");
+            System.out.print("enter zip code- ");
             contact.setZip(sc.nextInt());
-            System.out.println("Enter contact:");
+            System.out.print("enter contact- ");
             contact.setPhoneno(sc.nextInt());
-            System.out.println("Enter email:");
+            System.out.print("enter email- ");
             contact.setEmail(sc.next());
             cArray.add(contact);
-            System.out.println("Whether you want to add more (yes/no)? ");
+            System.out.print("Do you want to add more (yes/no) - ");
             option = sc.next();
         } while (!option.equalsIgnoreCase("no"));
     }
 
     public static void Edit(ArrayList<Contact> cArray) {
-        System.out.println("What to edit ?");
-        System.out.println("firstname, lastname, address,city, state, contact");
+        System.out.println("what you want to edit :");
+        System.out.print("firstname, lastname, address, state, contact : ");
         String choiceEdit = sc.next();
         if (choiceEdit.equals("firstname")) {
-            System.out.println("First name :");
-            String oldFirstname = sc.next();
+            System.out.print("whose firstname : ");
+            String oldName = sc.next();
             for (int j = 0; j < cArray.size(); j++) {
-                if (oldFirstname.equals(cArray.get(j).getFirstname())) {
-                    System.out.println("Enter new first name :");
+                if (oldName.equals(cArray.get(j).getFirstname())) {
+                    System.out.print("Enter new firstname : ");
                     String newName = sc.next();
                     cArray.get(j).setFirstname(newName);
                 }
             }
         }
         if (choiceEdit.equals("lastname")) {
-            System.out.println("Last name :");
+            System.out.print("Whose lastname : ");
             String oldLastName = sc.next();
             for (int j = 0; j < cArray.size(); j++) {
                 if (oldLastName.equals(cArray.get(j).getFirstname())) {
-                    System.out.println("Enter new last name :");
+                    System.out.print("Enter new Lastname : ");
                     cArray.get(j).setLastname(sc.next());
                 }
             }
         }
         if (choiceEdit.equals("address")) {
-            System.out.println("Address :");
+            System.out.print("Whose address : ");
             String oldaddress = sc.next();
             for (int j = 0; j < cArray.size(); j++) {
                 if (oldaddress.equals(cArray.get(j).getFirstname())) {
-                    System.out.println("Enter new address :");
+                    System.out.print("Enter new address : ");
                     cArray.get(j).setAddress(sc.next());
                 }
             }
         }
         if (choiceEdit.equals("city")) {
-            System.out.println("City :");
+            System.out.print("Whose city : ");
             String oldcity = sc.next();
             for (int j = 0; j < cArray.size(); j++) {
                 if (oldcity.equals(cArray.get(j).getFirstname())) {
-                    System.out.println("Enter new city :");
-                    cArray.get(j).setState(sc.next());
+                    System.out.print("Enter new city : ");
+                    cArray.get(j).setAddress(sc.next());
                 }
             }
         }
         if (choiceEdit.equals("state")) {
-            System.out.println("State :");
+            System.out.print("Whose state : ");
             String oldstate = sc.next();
             for (int j = 0; j < cArray.size(); j++) {
                 if (oldstate.equals(cArray.get(j).getFirstname())) {
-                    System.out.println("Enter new state :");
+                    System.out.print("Enter new state : ");
                     cArray.get(j).setState(sc.next());
                 }
             }
         }
-        if (choiceEdit.equals("phone")) {
-            System.out.println("Phone no.:");
+        if (choiceEdit.equals("phoneno")) {
+            System.out.print("Whose phone number : ");
             String oldphoneno = sc.next();
             for (int j = 0; j < cArray.size(); j++) {
                 if (oldphoneno.equals(cArray.get(j).getFirstname())) {
-                    System.out.println("Enter new phone no. :");
+                    System.out.print("Enter new phone number : ");
                     cArray.get(j).setPhoneno(sc.nextInt());
                 }
             }
@@ -127,9 +145,9 @@ public class AddressBookMain {
     }
 
     public static void Delete(ArrayList<Contact> cArray) {
-        System.out.println("Enter the name you want to delete : ");
+        System.out.print("Enter the name you want to delete : ");
         String del = sc.next();
-        System.out.println("Address book updated successfully");
+        System.out.println("Address book is now updated ");
         for (int i = 0; i < cArray.size(); i++) {
             if (del.equals(cArray.get(i).getFirstname())) {
                 cArray.remove(cArray.get(i));
@@ -137,22 +155,17 @@ public class AddressBookMain {
         }
         for (int i = 0; i < cArray.size(); i++) {
             System.out.println(cArray.get(i).getFirstname() + " " + cArray.get(i).getLastname() + " " +
-                    cArray.get(i).getAddress() + " " + cArray.get(i).getCity() + " " + cArray.get(i).getState() + " " +
+                    cArray.get(i).getAddress() + " " + cArray.get(i).getState() + " " +cArray.get(i).getCity() + " "+
                     cArray.get(i).getZip() + " " + cArray.get(i).getPhoneno() + " " + cArray.get(i).getEmail());
         }
-        System.out.println("---------------------------------------------------------------");
+        System.out.println("---------------------------------------------------------------------------");
     }
 
     public static void Print(ArrayList<Contact> cArray) {
         for (int i = 0; i < cArray.size(); i++) {
             System.out.println(cArray.get(i).getFirstname() + " " + cArray.get(i).getLastname() + " " +
-                    cArray.get(i).getAddress() + " " + cArray.get(i).getCity() + " " + cArray.get(i).getState() + " " +
+                    cArray.get(i).getAddress() + " " + cArray.get(i).getCity() + " "+ cArray.get(i).getState() + " " +
                     cArray.get(i).getZip() + " " + cArray.get(i).getPhoneno() + " " + cArray.get(i).getEmail());
         }
     }
-
-    public static void Stop() {
-        System.out.println("Thank you");
-    }
 }
-
