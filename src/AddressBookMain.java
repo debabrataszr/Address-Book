@@ -57,19 +57,21 @@ public class AddressBookMain {
         String option;
         do {
             Contact contact = new Contact();
-            System.out.print("enter name- ");
+            System.out.print("Enter name- ");
             contact.setFirstname(sc.next());
-            System.out.print("enter lastname- ");
+            System.out.print("Enter lastname- ");
             contact.setLastname(sc.next());
-            System.out.print("enter address- ");
+            System.out.print("Enter address- ");
             contact.setAddress(sc.next());
-            System.out.print("enter state- ");
+            System.out.print("Enter city- ");
+            contact.setCity(sc.next());
+            System.out.print("Enter state- ");
             contact.setState(sc.next());
-            System.out.print("enter zip code- ");
+            System.out.print("Enter zip code- ");
             contact.setZip(sc.nextInt());
-            System.out.print("enter contact- ");
+            System.out.print("Enter contact- ");
             contact.setPhoneno(sc.nextInt());
-            System.out.print("enter email- ");
+            System.out.print("Enter email- ");
             contact.setEmail(sc.next());
             cArray.add(contact);
             System.out.print("Do you want to add more (yes/no) - ");
@@ -79,7 +81,7 @@ public class AddressBookMain {
 
     public static void Edit(ArrayList<Contact> cArray) {
         System.out.println("what you want to edit :");
-        System.out.print("firstname, lastname, address, state, contact : ");
+        System.out.print("firstname, lastname, address, city, state, contact : ");
         String choiceEdit = sc.next();
         if (choiceEdit.equals("firstname")) {
             System.out.print("whose firstname : ");
